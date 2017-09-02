@@ -13,6 +13,7 @@
 
 <select name="jigen">
 <option >指定なし</option>
+<option value="指定なし" ></option>
 <option value="１" >１</option>
 <option value="２" >２</option>
 <option value="３" >３</option>
@@ -28,7 +29,7 @@
 <% @units.each do |unit| %>
 <br><br>
 <%= unit.kyouin %>先生<br>
-<%= unit.jigen %> <br>
+<%= unit.jigen.delete("[青山]").delete("年").delete("期") %>期科目 <br>
 <%= unit.kaikou %>学部科目<br>
 <%= unit.kamoku %> <br>
 <%= unit.year %>年度<br>
