@@ -37,6 +37,7 @@
 <%= unit.kaikou %>学部科目<br>
 <%= unit.kamoku %> <br>
 <%= unit.year %>年度<br>
+<%= link_to "show detail","/reviews/#{unit.id}",method: :get %>
 <br><br>
 <% end %>
 <%= paginate(@units)%>
