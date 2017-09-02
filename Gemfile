@@ -45,3 +45,8 @@ group :development do
   gem 'spring'
 end
 
+gem 'pry-rails'
+gem 'mechanize'
+gem 'devise'
+gem 'kaminari'
+
