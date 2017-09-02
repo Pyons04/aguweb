@@ -1,8 +1,8 @@
 <%= form_tag('/top/show', method: :get) do %>
-<input class="search__query" name="keyword_kamoku" placeholder="科目名で検索" type="text" value=""><br>
-
+<input class="search__query" name="keyword_kamoku" placeholder="科目で検索" type="text" value=""><br>
+<!-- <button class="btn-search" title="検索" type="submit"><i class="icon-search"></i></button></input> -->
 <select name="day">
-<option >指定なし</option>
+<option>指定なし</option>
 <option value="月" >月</option>
 <option value="火" >火</option>
 <option value="水" >水</option>
@@ -12,7 +12,7 @@
 </select>曜日<br>
 
 <select name="jigen">
-<option >指定なし</option>
+<option>指定なし</option>
 <option value="１" >１</option>
 <option value="２" >２</option>
 <option value="３" >３</option>
@@ -21,12 +21,17 @@
 <option value="６" >６</option>
 </select>時限目<br>
 
-
-<input class="search__query" name="keyword_kyouin" placeholder="先生の名前で検索" type="text" value=""><button class="btn-search" title="検索" type="submit">SEARCH<i class="icon-search"></i></button></input><br>
+<input class="search__query" name="keyword_kyouin" placeholder="教員で検索" type="text" value=""><button class="btn-search" title="検索" type="submit">SEARCH<i class="icon-search"></i></button></input>
 <% end %>
-人気の授業一覧
+
+<!-- <form accept-charset="utf-8" action="/" class="js-search-submit" method="get"> -->
+<!-- </form> -->
+
+
+
 <% @units.each do |unit| %>
-<br><br>
+
+
 <%= unit.kyouin %>先生<br>
 <%= unit.jigen %> <br>
 <%= unit.kaikou %>学部科目<br>
