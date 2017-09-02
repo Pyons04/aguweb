@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170902082019) do
+ActiveRecord::Schema.define(version: 20170902093040) do
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "unit_id",      limit: 4
+    t.integer  "user_id",      limit: 4
+    t.integer  "gpa",          limit: 4
+    t.text     "content",      limit: 65535
+    t.text     "time",         limit: 65535
+    t.integer  "satisfaction", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "units", force: :cascade do |t|
     t.string   "kyouin",     limit: 255
