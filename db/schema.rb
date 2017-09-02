@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170902093040) do
     t.integer  "user_id",      limit: 4
     t.integer  "gpa",          limit: 4
     t.text     "content",      limit: 65535
-    t.text     "time",         limit: 65535
+    t.text     "test",         limit: 65535
     t.integer  "satisfaction", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"

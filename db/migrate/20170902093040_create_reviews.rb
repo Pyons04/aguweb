@@ -5,7 +5,7 @@ class CreateReviews < ActiveRecord::Migration
       t.integer :user_id
       t.integer :gpa
       t.text    :content
-      t.text    :time
+      t.text    :test
       t.integer :satisfaction
       t.timestamps
     end
