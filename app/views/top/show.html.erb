@@ -1,6 +1,5 @@
 <%= form_tag('/top/show', method: :get) do %>
 <input class="search__query" name="keyword_kamoku" placeholder="科目で検索" type="text" value=""><br>
-<!-- <button class="btn-search" title="検索" type="submit"><i class="icon-search"></i></button></input> -->
 <select name="day">
 <option value="" >指定なし</option>
 <option value="月" >月</option>
@@ -23,10 +22,6 @@
 
 <input class="search__query" name="keyword_kyouin" placeholder="教員で検索" type="text" value=""><button class="btn-search" title="検索" type="submit">SEARCH<i class="icon-search"></i></button></input>
 <% end %>
-
-<!-- <form accept-charset="utf-8" action="/" class="js-search-submit" method="get"> -->
-<!-- </form> -->
-
 
 
 <% @units.each do |unit| %>

@@ -19,18 +19,24 @@
 授業内容:<%= review.content%><br>
 取得成績：<%= review.gpa %><br>
 評価・テスト情報:<%= review.test %>
-<% if current_user.id==review.user.id %>
+  <% if current_user.id==review.user.id %>
+<% if @back_url.present?%><!-- 既に検索結果画面のurlを持ている場合の削除ボタン。 -->
+
+<%= link_to"レビューを消去する",review_path(:id =>"#{review.id}",:back_url=>"#{@back_url}"),method: :delete%>
+  <%else%><!-- 検索画面のurlを持っていない場合、urlを取得してからコントローラーに送信 -->
 <%= link_to"レビューを消去する",review_path(:id =>"#{review.id}",:back_url=>"#{request.referer}"),method: :delete%>
-<% end %>
+  <%end%>
+<%end%>
 <br>
 -------------------------------<br>
 <%end%>
-<% if @back_url.present? %>
+<%if @back_url.present? %>
 <%= link_to "BACK", "#{@back_url}",method: :get%>
 <% else %>
 <%= link_to '戻る', :back %>
 <%end%>
 <div class="contents row">
+
   <%= form_tag('/reviews', method: :post) do %>
     <h3>
       レビューを投稿しよう
@@ -38,7 +44,7 @@
     <textarea cols="30" name="content" placeholder="授業の内容についての情報。" rows="10"></textarea>
     <textarea cols="30" name="test" placeholder="テストや評価に関する情報。" rows="10"></textarea><br>
      取得成績<br>
-    <input type="radio" name="gpa" value="非公表">非公表・不明
+    <input type="radio" name="gpa" value="非公表" checked="checked">非公表・不明
     <input type="radio" name="gpa" value="0">落単
     <input type="radio" name="gpa" value="1">C
     <input type="radio" name="gpa" value="2">B
@@ -48,13 +54,21 @@
      授業満足度<br>
     <input type="radio" name="satisfaction" value="0">0点/4点
     <input type="radio" name="satisfaction" value="1">1点/4点
-    <input type="radio" name="satisfaction" value="2">2点/4点
+    <input type="radio" name="satisfaction" value="2" checked="checked">2点/4点
     <input type="radio" name="satisfaction" value="3">3点/4点
     <input type="radio" name="satisfaction" value="4">4点/4点
 <br>
+ <%if @back_url.present?%><!-- 既に検索結果画面のurlを持ている場合の送信ボタン。 -->
 
     <%= hidden_field_tag(:unit_id, params[:id]) %>
-    <%= hidden_field_tag(:back_url,"#{request.referer}") %><!-- このビューページの一つ前のurlを取得して、コントローラに送信。 -->
+    <%= hidden_field_tag(:back_url,"#{@back_url}") %>
     <input type="submit" value="SUBMIT!">
-  <% end %>
+
+ <%else%><!-- 検索画面のurlを持っていない場合、urlを取得してからコントローラーに送信 -->
+    <%= hidden_field_tag(:unit_id, params[:id]) %>
+    <%= hidden_field_tag(:back_url,"#{request.referer}") %>
+    <input type="submit" value="SUBMIT!">
+ <%end%>
+    <%end%>
+
 </div>
