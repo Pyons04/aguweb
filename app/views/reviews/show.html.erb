@@ -20,7 +20,7 @@
 取得成績：<%= review.gpa %><br>
 評価・テスト情報:<%= review.test %>
 <% if current_user.id==review.user.id %>
-<%= link_to"レビューを削除する","#{review.id}",method: :delete%>
+<%= link_to"レビューを消去する",review_path(:id =>"#{review.id}",:back_url=>"#{request.referer}"),method: :delete%>
 <% end %>
 <br>
 -------------------------------<br>

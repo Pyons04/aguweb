@@ -12,9 +12,8 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     review=Review.find(params[:id])
-    redirect_to controller: 'reviews', action: 'show', id: Review.find(params[:id]).unit.id
+    redirect_to controller: 'reviews', action: 'show', id: Review.find(params[:id]).unit.id,back_url:params[:back_url]
     review.destroy
   end
 
