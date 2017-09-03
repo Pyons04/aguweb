@@ -1,17 +1,22 @@
-<%= @unit.kyouin %>先生の
+<br><br><%= @unit.kyouin %>先生の
 <%= @unit.kamoku %>に関するレビュー<br>
-<%= @unit.jigen %><br>
-データは<%= @unit.year%>のものです。
+<%= @unit.jigen.delete("[青山]").delete("年").delete("期") %><br>
+データは<%= @unit.year%>年のものです。
 <Br>
 <br>
 <br>
 
+<% if @reviews.count==0 %>
+レビューはありません。最初のレビューを投稿してください<br>
+<%end%>
 
 
 <% @reviews.each do |review| %><br>
 <br>
 -------------------------------<br>
 <%= review.user.nickname %>さんの投稿<br>
+
+
 授業満足度：<%= review.satisfaction %><br>
 授業内容:<%= review.content%><br>
 取得成績：<%= review.gpa %><br>
@@ -22,7 +27,7 @@
 <br>
 -------------------------------<br>
 <%end%>
-
+<%= link_to '戻る', :back %>
 <div class="contents row">
   <%= form_tag('/reviews', method: :post) do %>
     <h3>
