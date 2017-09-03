@@ -26,6 +26,7 @@
 -------------------------------<br>
 <%end%>
 <%= link_to '戻る', :back %>
+<%= link_to "BACK", "#{@back_url}",method: :get%>
 <div class="contents row">
   <%= form_tag('/reviews', method: :post) do %>
     <h3>
@@ -50,6 +51,7 @@
 <br>
 
     <%= hidden_field_tag(:unit_id, params[:id]) %>
+    <%= hidden_field_tag(:back_url,"#{request.referer}") %>
     <input type="submit" value="SUBMIT!">
   <% end %>
 </div>
