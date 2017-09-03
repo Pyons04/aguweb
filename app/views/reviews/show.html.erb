@@ -20,13 +20,16 @@
 取得成績：<%= review.gpa %><br>
 評価・テスト情報:<%= review.test %>
 <% if current_user.id==review.user.id %>
-<%= link_to"レビューを削除する","#{review.id}",method: :delete, unit_id:params[:id]%>
+<%= link_to"レビューを削除する","#{review.id}",method: :delete%>
 <% end %>
 <br>
 -------------------------------<br>
 <%end%>
-<%= link_to '戻る', :back %>
+<% if @back_url.present? %>
 <%= link_to "BACK", "#{@back_url}",method: :get%>
+<% else %>
+<%= link_to '戻る', :back %>
+<%end%>
 <div class="contents row">
   <%= form_tag('/reviews', method: :post) do %>
     <h3>
@@ -51,7 +54,7 @@
 <br>
 
     <%= hidden_field_tag(:unit_id, params[:id]) %>
-    <%= hidden_field_tag(:back_url,"#{request.referer}") %>
+    <%= hidden_field_tag(:back_url,"#{request.referer}") %><!-- このビューページの一つ前のurlを取得して、コントローラに送信。 -->
     <input type="submit" value="SUBMIT!">
   <% end %>
 </div>

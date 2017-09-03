@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    binding.pry
     review=Review.find(params[:id])
     redirect_to controller: 'reviews', action: 'show', id: Review.find(params[:id]).unit.id
     review.destroy
