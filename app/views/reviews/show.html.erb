@@ -9,3 +9,14 @@
 <br>
 -------------------------------<br>
 <%end%>
+
+<div class="contents row">
+  <%= form_tag('/reviews', method: :post) do %>
+    <h3>
+      レビューを投稿しよう
+    </h3>
+    <textarea cols="30" name="content" placeholder="授業の内容についての情報。" rows="10"></textarea>
+    <textarea cols="30" name="test" placeholder="テストや評価に関する情報。" rows="10"></textarea>
+    <input type="submit" value="SUBMIT!">
+  <% end %>
+</div>
