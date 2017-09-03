@@ -1,3 +1,13 @@
+<%= @unit.kyouin %>先生の
+<%= @unit.kamoku %>に関するレビュー<br>
+<%= @unit.jigen %><br>
+データは<%= @unit.year%>のものです。
+<Br>
+<br>
+<br>
+
+
+
 <% @reviews.each do |review| %><br>
 <br>
 -------------------------------<br>
@@ -6,6 +16,9 @@
 授業内容:<%= review.content%><br>
 取得成績：<%= review.gpa %><br>
 評価・テスト情報:<%= review.test %>
+<% if current_user.id==review.user.id %>
+<%= link_to"レビューを削除する","#{review.id}",method: :delete, unit_id:params[:id]%>
+<% end %>
 <br>
 -------------------------------<br>
 <%end%>
@@ -16,7 +29,24 @@
       レビューを投稿しよう
     </h3>
     <textarea cols="30" name="content" placeholder="授業の内容についての情報。" rows="10"></textarea>
-    <textarea cols="30" name="test" placeholder="テストや評価に関する情報。" rows="10"></textarea>
+    <textarea cols="30" name="test" placeholder="テストや評価に関する情報。" rows="10"></textarea><br>
+     取得成績<br>
+    <input type="radio" name="gpa" value="非公表">非公表・不明
+    <input type="radio" name="gpa" value="0">落単
+    <input type="radio" name="gpa" value="1">C
+    <input type="radio" name="gpa" value="2">B
+    <input type="radio" name="gpa" value="3">A
+    <input type="radio" name="gpa" value="4">AA
+    <br><br>
+     授業満足度<br>
+    <input type="radio" name="satisfaction" value="0">0点/4点
+    <input type="radio" name="satisfaction" value="1">1点/4点
+    <input type="radio" name="satisfaction" value="2">2点/4点
+    <input type="radio" name="satisfaction" value="3">3点/4点
+    <input type="radio" name="satisfaction" value="4">4点/4点
+<br>
+
+    <%= hidden_field_tag(:unit_id, params[:id]) %>
     <input type="submit" value="SUBMIT!">
   <% end %>
 </div>
