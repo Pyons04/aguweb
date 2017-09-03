@@ -24,16 +24,16 @@
 
 <input class="search__query" name="keyword_kyouin" placeholder="先生の名前で検索" type="text" value=""><button class="btn-search" title="検索" type="submit">SEARCH<i class="icon-search"></i></button></input><br>
 <% end %>
-人気の授業一覧
-<% @units.each do |unit| %>
+新着のレビュー
+<% @reviews.each do |review| %>
 <br><br>
-<%= unit.kyouin %>先生<br>
-<%= unit.jigen.delete("[青山]").delete("年").delete("期") %>期科目 <br>
-<%= unit.kaikou %>学部科目<br>
-<%= unit.kamoku %> <br>
-<%= unit.year %>年度<br>
-<%= link_to "show detail","reviews/#{unit.id}",method: :get %><br>
-投稿済みレビュー数:<%= unit.reviews.count %>件<br>
+<%= time_ago_in_words review.created_at %>&nbsp;&nbsp;ago<br>
+<%= review.unit.kyouin %>先生<br>
+<%= review.unit.jigen.delete("[青山]").delete("年").delete("期") %>期科目 <br>
+<%= review.unit.kaikou %>学部科目<br>
+<%= review.unit.kamoku %> <br>
+<%= review.unit.year %>年度<br>
+授業内容：<%= review.content.truncate(20) %>
+<%= link_to "show detail","reviews/#{review.unit.id}",method: :get %><br>
 <br><br>
 <% end %>
-<%= paginate(@units)%>

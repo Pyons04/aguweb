@@ -1,5 +1,6 @@
 class TopController < ApplicationController
   def index
+    @reviews=Review.order(created_at: :desc).limit(4)
     @units=Unit.all.limit(100).page(params[:page]).per(10)
   end
 
