@@ -1,5 +1,5 @@
 require "csv"
-CSV.foreach('db/units.csv', encoding: 'Shift_JIS:UTF-8') do |row|
+CSV.foreach('db/units.csv', encoding: "SJIS:UTF-8") do |row|
   Unit.create(kyouin:row[1],kamoku:row[2],jigen:row[3],year:row[4],kaikou:row[5])
 end
 
