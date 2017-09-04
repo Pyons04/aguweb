@@ -6,6 +6,7 @@ class TopController < ApplicationController
 
   def show
     @units=Unit.all
+    @units=@units.where('kaikou LIKE(?)',"%#{params[:kaikou]}%").page(params[:page]).per(5) if params[:kaikou].present?
     @units=@units.where('kamoku LIKE(?)',"%#{params[:keyword_kamoku]}%").page(params[:page]).per(5) if params[:keyword_kamoku].present?
     @units=@units.where('kyouin LIKE(?)',"%#{params[:keyword_kyouin]}%").page(params[:page]).per(5) if params[:keyword_kyouin].present?
 

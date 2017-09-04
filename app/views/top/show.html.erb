@@ -20,6 +20,7 @@
 <option value="６" >６</option>
 </select>時限目<br>
 
+<input class="search__query" name="kaikou" placeholder="学部で検索" type="text" value="">
 <input class="search__query" name="keyword_kyouin" placeholder="教員で検索" type="text" value=""><button class="btn-search" title="検索" type="submit">SEARCH<i class="icon-search"></i></button></input>
 <% end %>
 
@@ -29,8 +30,8 @@
 
 <%= unit.kyouin %>先生<br>
 <%= unit.jigen.delete("[青山]").delete("年").delete("期")%>期科目 <br>
-<%= unit.kaikou %>学部科目<br>
-<%= unit.kamoku %> <br>
+<%= unit.kaikou.delete("学部") %>学部科目<br>
+<%= unit.kamoku.delete("(再履修者用)") %> <br>
 <%= unit.year %>年度<br>
 <%= link_to "show detail","/reviews/#{unit.id}",method: :get %><br>
 投稿済みレビュー数:<%= unit.reviews.count %>件<br>
