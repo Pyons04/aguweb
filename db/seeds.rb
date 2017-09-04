@@ -1,7 +1,5 @@
 require "csv"
-units_csv = CSV.readlines("db/units.csv", encoding: 'Shift_JIS:UTF-8')
-units_csv.shift
-units_csv.each do |row|
+CSV.foreach('db/units.csv', encoding: 'Shift_JIS:UTF-8') do |row|
   Unit.create(kyouin:row[1],kamoku:row[2],jigen:row[3],year:row[4],kaikou:row[5])
 end
 
