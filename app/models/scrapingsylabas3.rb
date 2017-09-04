@@ -3,7 +3,7 @@ class Scrapingsylabas3
   require 'mechanize'
   def  self.movie_url
     puts"--------------------------------------"
-    puts"          ScrapingSylabas"
+    puts"          ScrapingSyllabus"
     puts"--------------------------------------"
     puts"スクレイピングするアドレスを入力してください"
     first_url=gets.to_s

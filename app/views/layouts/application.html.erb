@@ -9,6 +9,7 @@
 <body>
 <% if user_signed_in? %>
 <%=link_to 'ログアウト',destroy_user_session_path,method: :delete %>
+<%=link_to 'indexへ戻る',top_index_path,method: :get%>
 <%end%>
 <%= yield %>
 
