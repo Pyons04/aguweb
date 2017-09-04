@@ -2,7 +2,7 @@ require "csv"
 units_csv = CSV.readlines("db/units.csv")
 units_csv.shift
 units_csv.each do |row|
-  Company.create(kyouin:row[1],kamoku:row[2],jigen:row[3],year:row[4],kaikou:row[5])
+  Unit.create(kyouin:row[1],kamoku:row[2],jigen:row[3],year:row[4],kaikou:row[5])
 end
 
 
