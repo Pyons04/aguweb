@@ -22,7 +22,6 @@ class Scrapingsylabas3
     #学部の確認終わり
     links=[]
     next_url=1.to_i
-    binding.pry
 
     while next_url<number_of_pages do        #この数字はページ数+1
      current_page=(first_url.to_s + next_url.to_s)
