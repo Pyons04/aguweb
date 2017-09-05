@@ -1,46 +1,84 @@
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="bootstrap.min.css" />
+</head>
+
+
+
 <%= form_tag('/top/show', method: :get) do %>
-<input class="search__query" name="keyword_kamoku" placeholder="科目名で検索" type="text" value=""><br>
+<div class="form-group col-xs-8 ">
+    <label class="control-label" for="usage1select2">学部で絞る</label>
+    <select class="form-control" id="usage1select2" name="kaikou">
+      <option>経済</option>
+      <option>国際政治経済</option>
+      <option>総合文化政策</option>
+      <option>青山スタンダード</option>
+   </select>
+</div>
 
-<select name="day">
-<option value="">指定なし</option>
-<option value="月" >月</option>
-<option value="火" >火</option>
-<option value="水" >水</option>
-<option value="木" >木</option>
-<option value="金" >金</option>
-<option value="土" >土</option>
-</select>曜日<br>
 
-<select name="jigen">
-<option value="">指定なし</option>
-<option value="１" >１</option>
-<option value="２" >２</option>
-<option value="３" >３</option>
-<option value="４" >４</option>
-<option value="５" >５</option>
-<option value="６" >６</option>
-</select>時限目<br>
+<form class="navbar-form " role="search">
+  <div class="form-group  col-xs-10">
+    <input type="text" class="form-control" placeholder="先生の名前で絞る" name="keyword_kyouin">
+  </div>
+  <br>
+   <div class="form-group col-xs-10">
+    <input type="text" class="form-control" placeholder="科目の名前で絞る" name="keyword_kamoku">
+  </div>
 
-<select name="kaikou">学部で絞り込む<br>
-<option value="">指定なし</option>
-<option value="青山スタンダード" >青スタ</option>
-<option value="経済" >経済学部</option>
-<option value="経営" >経営学部</option>
-<option value="総合文化政策学部" >総合文化政策学部</option>
-</select>の科目<br>
 
-<input class="search__query" name="keyword_kyouin" placeholder="先生の名前で検索" type="text" value=""><button class="btn-search" title="検索" type="submit">SEARCH<i class="icon-search"></i></button></input><br>
+<div class="form-group col-xs-5">
+    <label class="control-label" for="usage1select2">曜日で絞る</label>
+    <select class="form-control" id="usage1select2" name="day">
+      <option>月</option>
+      <option>火</option>
+      <option>水</option>
+      <option>木</option>
+      <option>金</option>
+      <option>土</option>
+      <option>指定しない</option>
+    </select>
+  </div>
+
+  <div class="form-group col-xs-5">
+    <label class="control-label" for="usage1select2">時限で絞る</label>
+    <select class="form-control" id="usage1select2" name="jigen">
+      <option>１</option>
+      <option>２</option>
+      <option>３</option>
+      <option>４</option>
+      <option>５</option>
+      <option>６</option>
+      <option>指定しない</option>
+   </select>
+  </div>
+  </div>
+<br><Br><br><Br><br><br><Br><br><Br><br><br><Br>
+  <button type="submit" class="btn btn-default center-block">Serach!</button>
+</form>
+<br>
+
 <% end %>
-新着のレビュー
+
+
+<!-- <br><br><br><Br><Br><Br><Br><Br><br> -->
+
+What's New...?
 <% @reviews.each do |review| %>
 <br><br>
-<%= time_ago_in_words review.created_at %>&nbsp;&nbsp;ago<br>
-<%= review.unit.kyouin %>先生<br>
-<%= review.unit.jigen.delete("[青山]").delete("年").delete("期") %>期科目 <br>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <span class="label label-default">New</span>
+    <%= review.unit.kyouin %>先生<br>
+<%= review.unit.jigen.delete("[青山]").delete("年").delete("期") %>期科目
 <%= review.unit.kaikou.delete("学部").delete("山").delete("ンダード科目") %>学部科目<br>
-<%= review.unit.kamoku.delete("(再履修者用)") %> <br>
-<%= review.unit.year %>年度<br>
-投稿レビュー：<%= review.content.truncate(20) %>
-<%= link_to "show detail","reviews/#{review.unit.id}",method: :get %><br>
+  </div>
+  <div class="panel-footer">
+  <%= time_ago_in_words review.created_at %>&nbsp;&nbsp;ago<br>
+  投稿レビュー：<%= review.content.truncate(40) %>
+  <%= link_to "show detail","reviews/#{review.unit.id}",method: :get %><br>
+  </div>
+</div>
+
 <br><br>
 <% end %>

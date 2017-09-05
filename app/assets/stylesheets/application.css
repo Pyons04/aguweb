@@ -14,3 +14,7 @@
  *= require_tree .
  *= require_self
  */
+ .application{
+  height:50px;
+  background-color: #43E359;
+ }

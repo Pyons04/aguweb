@@ -5,6 +5,11 @@ class TopController < ApplicationController
   end
 
   def show
+ params[:day]="" if params[:day]=="指定しない"
+ params[:jigen]="" if params[:jigen]=="指定しない"
+
+ 
+
     @units=Unit.all
     @units=@units.where('kaikou LIKE(?)',"%#{params[:kaikou]}%").page(params[:page]).per(5) if params[:kaikou].present?
     @units=@units.where('kamoku LIKE(?)',"%#{params[:keyword_kamoku]}%").page(params[:page]).per(5) if params[:keyword_kamoku].present?

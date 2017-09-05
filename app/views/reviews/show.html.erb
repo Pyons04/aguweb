@@ -1,48 +1,62 @@
-<br><br><%= @unit.kyouin %>先生の
-<%= @unit.kamoku %>に関するレビュー<br>
-<%= @unit.jigen.delete("[青山]").delete("(再履修者用)").delete("年").delete("期") %><br>
-データは<%= @unit.year%>年のものです。
-<Br>
-<br>
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="bootstrap.min.css" />
+</head>
+
+
+
 <br>
 
+<div class="jumbotron">
+  <h1><%= @unit.kamoku %>に関するレビュー</h1>
+  <p> <a href="" class="btn btn-default" role="button"><%= @unit.kyouin %>先生</a></p>
+  <p><%= @unit.jigen.delete("[青山]").delete("(再履修者用)").delete("年").delete("期") %><br>
+データは<%= @unit.year%>年のものです。</p>
+</div>
 <% if @reviews.count==0 %>
 レビューはありません。最初のレビューを投稿してください<br>
 <%end%>
 
 
 <% @reviews.each do |review| %><br>
-<br>
--------------------------------<br>
-<%= review.user.nickname %>さんの投稿<br>
-授業満足度：<%= review.satisfaction %><br>
-授業内容:<%= review.content%><br>
-取得成績：<%= review.gpa %><br>
-評価・テスト情報:<%= review.test %>
+
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    <h4 class="list-group-item-heading">評価・テスト情報&nbsp;&nbsp;取得成績：<%= review.gpa %></h4>
+    <p class="list-group-item-text">評価・テスト情報:<%= review.test %>(<%= review.user.nickname %>さんの投稿)<br></p>
+  </a>
+</div>
+
+<div class="list-group">
+  <a href="#" class="list-group-item">
+    <h4 class="list-group-item-heading">授業内容&nbsp;&nbsp;授業満足度：<%= review.satisfaction %>（4点満点）<br></h4>
+    <p class="list-group-item-text">授業内容:<%= review.content%>(<%= review.user.nickname %>さんの投稿)<br></p>
+  </a>
   <% if current_user.id==review.user.id %>
 <% if @back_url.present?%><!-- 既に検索結果画面のurlを持ている場合の削除ボタン。 -->
 
 <%= link_to"レビューを消去する",review_path(:id =>"#{review.id}",:back_url=>"#{@back_url}"),method: :delete%>
   <%else%><!-- 検索画面のurlを持っていない場合、urlを取得してからコントローラーに送信 -->
 <%= link_to"レビューを消去する",review_path(:id =>"#{review.id}",:back_url=>"#{request.referer}"),method: :delete%>
-  <%end%>
+<%end%>
+</div>
+<%end%>
 <%end%>
 <br>
--------------------------------<br>
-<%end%>
 <%if @back_url.present? %>
 <%= link_to "BACK", "#{@back_url}",method: :get%>
 <% else %>
 <%= link_to '戻る', :back %>
 <%end%>
-<div class="contents row">
+
+
 
   <%= form_tag('/reviews', method: :post) do %>
     <h3>
       レビューを投稿しよう
     </h3>
-    <textarea cols="30" name="content" placeholder="授業の内容についての情報。" rows="10"></textarea>
-    <textarea cols="30" name="test" placeholder="テストや評価に関する情報。" rows="10"></textarea><br>
+    <textarea cols="58" name="content" placeholder="授業の内容についての情報。" rows="8" ></textarea>
+    <textarea cols="58" name="test" placeholder="テストや評価に関する情報。" rows="8"></textarea><br>
      取得成績<br>
     <input type="radio" name="gpa" value="非公表" checked="checked">非公表・不明
     <input type="radio" name="gpa" value="0">落単
@@ -71,4 +85,4 @@
  <%end%>
     <%end%>
 
-</div>
+
