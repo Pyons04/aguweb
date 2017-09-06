@@ -7,8 +7,8 @@
 
 <%= form_tag('/top/show', method: :get) do %>
 <div class="form-group col-xs-8 ">
-    <label class="control-label" for="usage1select2">学部で絞る</label>
     <select class="form-control" id="usage1select2" name="kaikou">
+    <option>学部を指定しない</option>
       <option>経済</option>
       <option>国際政治経済</option>
       <option>総合文化政策</option>
@@ -30,26 +30,26 @@
 <div class="form-group col-xs-5">
     <label class="control-label" for="usage1select2">曜日で絞る</label>
     <select class="form-control" id="usage1select2" name="day">
+    <option>指定しない</option>
       <option>月</option>
       <option>火</option>
       <option>水</option>
       <option>木</option>
       <option>金</option>
       <option>土</option>
-      <option>指定しない</option>
     </select>
   </div>
 
   <div class="form-group col-xs-5">
     <label class="control-label" for="usage1select2">時限で絞る</label>
     <select class="form-control" id="usage1select2" name="jigen">
+      <option>指定しない</option>
       <option>１</option>
       <option>２</option>
       <option>３</option>
       <option>４</option>
       <option>５</option>
       <option>６</option>
-      <option>指定しない</option>
    </select>
   </div>
   </div>
@@ -62,6 +62,14 @@
 
 
 <!-- <br><br><br><Br><Br><Br><Br><Br><br> -->
+
+<% if @units.count==0 %>
+<div class="alert alert-danger" role="alert">
+  <!-- <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> -->
+  <span class="sr-only">Error:</span>
+  授業が見つかりませんでした。条件を変えて再検索してみてください。
+</div>
+<%else%>
 <% @units.each do |unit| %>
 
 
@@ -84,5 +92,6 @@
 </center>
 
 <br><br>
+<% end %>
 <% end %>
 <%= paginate(@units)%>

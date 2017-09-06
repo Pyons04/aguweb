@@ -7,8 +7,8 @@ class TopController < ApplicationController
   def show
  params[:day]="" if params[:day]=="指定しない"
  params[:jigen]="" if params[:jigen]=="指定しない"
+ params[:kaikou]="" if params[:kaikou]=="学部を指定しない"
 
- 
 
     @units=Unit.all
     @units=@units.where('kaikou LIKE(?)',"%#{params[:kaikou]}%").page(params[:page]).per(5) if params[:kaikou].present?
