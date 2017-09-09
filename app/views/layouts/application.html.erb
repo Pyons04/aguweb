@@ -10,7 +10,7 @@
 </head>
 <body>
 <header class="application">
-<Div Align="right">
+<div Align="right">
 <% if user_signed_in? %>
 <h4>
 <%=link_to 'logout',destroy_user_session_path,method: :delete %>&nbsp;&nbsp;/
@@ -18,7 +18,7 @@
 <br>
 </h4>
 <%end%>
-</Div>
+</div>
 </header>
 <%= yield %>
 </body>
