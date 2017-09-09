@@ -1,7 +1,9 @@
 This is the web site for Aoyama Gakuin University so that it will be helpful to find better classes for them. This site is written by Ruby on Rails and developed by one of the student in A.G.U.
-You can find your classes easily because it has a serach engine and also,You can share reviews of the classes which you are taking and evaluate satisfaction rates of each classes.
+You can find your classes easily because it has a search engine and also,You can share reviews of the classes which you are taking and evaluate satisfaction rates of each classes.
 
 This web-sites is already uploaded in heroku-server but it is not published bacause I couldn't find the people to maintain this web sites.
 
+If you are interested in this websites and have some questions ,please feel free to intereput.
+⇒broad.basic17@gmail.com(9/9/2017)
 
 
