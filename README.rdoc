@@ -1,28 +1,7 @@
-== README
+This is the web site for Aoyama Gakuin University so that it will be helpful to find better classes for them. This site is written by Ruby on Rails and developed by one of the student in A.G.U.
+You can find your classes easily because it has a serach engine and also,You can share reviews of the classes which you are taking and evaluate satisfaction rates of each classes.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This web-sites is already uploaded in heroku-server but it is not published bacause I couldn't find the people to maintain this web sites.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
