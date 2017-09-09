@@ -7,6 +7,7 @@
 
 <%= form_tag('/top/show', method: :get) do %>
 <div class="form-group col-xs-8 ">
+<br>
     <select class="form-control" id="usage1select2" name="kaikou">
     <option>学部を指定しない</option>
       <option>経済</option>
@@ -62,6 +63,24 @@
 
 
 <!-- <br><br><br><Br><Br><Br><Br><Br><br> -->
+<br>
+<% if params[:jigen].present?%>
+<%= params[:jigen]%>時限目
+<%end%>
+<% if params[:day].present?%>
+<%= params[:day] %>曜日
+<%end%>
+<%if params[:kaikou].present?%>
+学部：<%= params[:kaikou]%>
+<%end%>
+<%if params[:keyword_kyouin].present?%>
+<%= params[:keyword_kyouin]%>先生
+<%end%>
+<%if params[:keyword_kamoku].present?%>
+講義名：<%= params[:keyword_kamoku]%>
+<%end%>
+の検索条件で、<%= @units.count%>件ヒットしました。
+
 
 <% if @units.count==0 %>
 <div class="alert alert-danger" role="alert">

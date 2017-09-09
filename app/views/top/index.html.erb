@@ -6,6 +6,7 @@
 
 
 <%= form_tag('/top/show', method: :get) do %>
+<br>
 <div class="form-group col-xs-8 ">
     <select class="form-control" id="usage1select2" name="kaikou">
       <option>学部を指定しない</option>
@@ -74,6 +75,7 @@ What's New...?
 <%= review.unit.kaikou.delete("学部").delete("山").delete("ンダード科目") %>学部科目<br>
   </div>
   <div class="panel-footer">
+  <%= review.unit.kamoku.delete("(再履修者用)")%><br>
   <%= time_ago_in_words review.created_at %>&nbsp;&nbsp;ago<br>
   投稿レビュー：<%= review.content.truncate(40) %>
   <%= link_to "show detail","reviews/#{review.unit.id}",method: :get %><br>
