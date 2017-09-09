@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Aguweb</title>
+  <title>A.G.U.web</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -15,6 +15,7 @@
 <h4>
 <%=link_to 'logout',destroy_user_session_path,method: :delete %>&nbsp;&nbsp;/
 <%=link_to 'index',top_index_path,method: :get%>&nbsp;&nbsp;&nbsp;
+<br>
 </h4>
 <%end%>
 </Div>
