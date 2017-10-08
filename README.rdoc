@@ -7,7 +7,7 @@ This web-sites is already uploaded in a heroku server but it is not published ba
 If you are interested in this websites and have some questions ,please feel free to intereput.
 ⇒broad.basic17＠gmail.com (Please change ＠to@)
 
-(Website:  https://aguweb.herokuapp.com/  )←Private. You need to put put password and ID to enter.
+(Website:  https://aguweb.herokuapp.com/  )←Private. You need to put password and ID to enter.
 
 (9/9/2017)
 
